@@ -1,40 +1,40 @@
 <?php
 /**
- * Elgg composer plus plugin
+ * Elgg boxhome plus plugin
  * 
  */
 
-elgg_register_event_handler('init', 'system', 'composer_init');
+elgg_register_event_handler('init', 'system', 'boxhome_init');
 
-function composer_init() {
+function boxhome_init() {
 
 	// Register a page handler, so we can have nice URLs
-	elgg_register_page_handler('composer', 'composer_page_handler');
+	elgg_register_page_handler('boxhome', 'boxhome_page_handler');
 
 	// Extend system CSS with our own styles
-	elgg_extend_view('css/elgg', 'composer/css');
+	elgg_extend_view('css/elgg', 'boxhome/css');
 
   $ctx = elgg_get_context();
 
   if ($ctx == 'activity'){
-    elgg_extend_view('page/layouts/elements/header', 'composer/init');
+    elgg_extend_view('page/layouts/elements/header', 'boxhome/init');
   } 
   
-  //elgg_extend_view('js/elgg', 'composer/js/init.composer.js');
+  //elgg_extend_view('js/elgg', 'boxhome/js/init.boxhome.js');
 }
 
-function composer_page_handler($page) {
+function boxhome_page_handler($page) {
 
 	if (!isset($page[0])) {
 		$page[0] = 'activity';
 	}
 
-	$composer_dir = elgg_get_plugins_path() . 'composer/pages';
+	$boxhome_dir = elgg_get_plugins_path() . 'boxhome/pages';
 
 	$page_type = $page[0];
 	switch ($page_type) {
 		case 'activity':			
-			include "$composer_dir/activity.php";
+			include "$boxhome_dir/activity.php";
 			break;
 		default:
 			return false;
