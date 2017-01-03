@@ -62,7 +62,7 @@ function parse_link(url)
         {
                 $('#parser_urls').slideDown('slow'); 
                              
-                $.post("<?php echo elgg_get_site_url(); ?>mod/composer/actions/parserurl.php?url="+escape(url),{}, function(response){
+                $.post("<?php echo elgg_get_site_url(); ?>mod/boxhome/actions/parserurl.php?url="+escape(url),{}, function(response){
                         if(response.type == 'youtube' || response.type == 'vimeo')
                             $('.video_icon').show()
                         else
